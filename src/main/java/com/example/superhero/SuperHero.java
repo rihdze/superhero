@@ -50,10 +50,12 @@ public class SuperHero {
 
     @Override
     public String toString() {
-        return "SuperHero{" +
-                "name= '" + name + '\'' +
-                ", superPower= '" + superPower + '\'' +
-                ", powerLevel= '" + powerLevel +
-                '}';
+        if (this.powerLevel == 0){
+            return "\nName: "+ name +"\nSuperpower: " +superPower+"\nPowerLevel: as weak as they get\n";
+        } else {
+            return "\nName: "+ name +"\nSuperpower: " +superPower+"\nPowerLevel: STRONG\n";
+        }
     }
+
+
 }

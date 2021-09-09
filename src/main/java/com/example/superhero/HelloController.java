@@ -34,6 +34,9 @@ public class HelloController {
     @FXML
     private Button btnprint;
 
+    @FXML
+    private Button btnfight;
+
 
 
     private String superHeroName;
@@ -66,8 +69,18 @@ public class HelloController {
             enemyHero.setName(getName(txtenemymonth.getText()));
             enemyHero.setSuperPower(getSuperpower());
             enemyHero.setPowerLevel(getPowerLevel());
+
+            if(enemyHero.getPowerLevel()==0){
+                txtArea.setText("Enemy superhero name: " + enemyHero.getName() +"\n superpower: " + enemyHero.getSuperPower()+ "\n power level: as weak as they get");
+            } else {
+                txtArea.setText("Enemy superhero name: " + enemyHero.getName() +" superpower: " + enemyHero.getSuperPower()+ " power level: STRONG");
+            }
+
         } else if (event.getSource()== btnprint){
             txtArea.setText("YOUR HERO: " + yourHero.toString() + "   ENEMY HERO: " + enemyHero.toString());
+        } else if(event.getSource() == btnfight){
+
+            fight();
         }
     }
 
@@ -126,21 +139,6 @@ public class HelloController {
         return name;
 
     }
-
-//    public void test(){
-//
-//        if(superHeroName != null){
-//            String lol = superHeroName + " IS WEAK AF dxdxdxd";
-//            txtArea.setText(lol);
-//        } else {
-//            txtArea.setText("Generate superhero name first!");
-//        }
-//
-//
-//
-//
-//
-//    }
 
     public int getPowerLevel(){
         Random r = new Random();
@@ -209,7 +207,27 @@ public class HelloController {
           return superPower;
     }
 
+    public int comparePowerLevels(int firstPower, int secondPower) {
+        // as firstPower less than secondPower, Output will be a value less than zero
+        // as firstPower more than secondPower, Output will be a value more than zero
+        // as firstPower equals to secondPower, Output will be a value of zero
 
+        return Integer.compare(firstPower, secondPower);
+    }
+
+
+    public void fight(){
+
+        if(comparePowerLevels(yourHero.getPowerLevel(), enemyHero.getPowerLevel()) < 0){
+            txtArea.setText(yourHero.getName() + " GETS REKT BY "+ enemyHero.getName());
+        } else if (comparePowerLevels(yourHero.getPowerLevel(), enemyHero.getPowerLevel()) > 0) {
+            txtArea.setText(enemyHero.getName() + " GETS REKT BY "+ yourHero.getName());
+        } else {
+            txtArea.setText("The fight ended in draw and both of them are \nD\nE\nA\nD");
+        }
+
+
+    }
 
 
 
