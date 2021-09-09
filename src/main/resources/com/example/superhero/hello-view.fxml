@@ -9,11 +9,13 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.superhero.HelloController">
    <children>
       <Label layoutX="48.0" layoutY="84.0" text="Enter inputs" />
-      <Button fx:id="btnGeneratename" layoutX="48.0" layoutY="148.0" mnemonicParsing="false" onAction="#getName" text="Generate name" />
+      <Button fx:id="btnGeneratename" layoutX="48.0" layoutY="148.0" mnemonicParsing="false" onAction="#onHelloButtonClick" text="Generate name" />
       <TextField fx:id="txtFieldmonth" layoutX="48.0" layoutY="116.0" promptText="Enter month of birth" />
       <TextArea fx:id="txtArea" layoutX="226.0" layoutY="110.0" prefHeight="181.0" prefWidth="278.0" />
-      <Button fx:id="btngenerate" layoutX="48.0" layoutY="220.0" mnemonicParsing="false" onAction="#test" text="Generate ?" />
-      <TextField fx:id="txtFieldDay" layoutX="48.0" layoutY="188.0" promptText="Enter day of birth" />
-      <Button fx:id="btngeneratesuperpower" layoutX="48.0" layoutY="266.0" mnemonicParsing="false" onAction="#getSuperpower" prefHeight="25.0" prefWidth="149.0" text="Generate super power" />
+      <Button fx:id="btngenerate" layoutX="48.0" layoutY="220.0" mnemonicParsing="false" onAction="#onHelloButtonClick" text="Generate ?" />
+      <TextField fx:id="txtenemymonth" layoutX="48.0" layoutY="188.0" promptText="Enemy month of birth" />
+      <Button fx:id="btngeneratesuperpower" layoutX="48.0" layoutY="266.0" mnemonicParsing="false" onAction="#onHelloButtonClick" prefHeight="25.0" prefWidth="149.0" text="Generate super power" />
+      <Button fx:id="btnCreateEenemy" layoutX="226.0" layoutY="331.0" mnemonicParsing="false" onAction="#onHelloButtonClick" text="Create enemy" />
+      <Button fx:id="btnprint" layoutX="48.0" layoutY="331.0" mnemonicParsing="false" onAction="#onHelloButtonClick" text="Print both heroes" />
    </children>
 </AnchorPane>

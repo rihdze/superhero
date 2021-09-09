@@ -23,23 +23,62 @@ public class HelloController {
     private Button btngenerate;
 
     @FXML
-    private TextField txtFieldDay;
+    private TextField txtenemymonth;
 
     @FXML
     private Button btngeneratesuperpower;
+
+    @FXML
+    private Button btnCreateEenemy;
+
+    @FXML
+    private Button btnprint;
+
 
 
     private String superHeroName;
     private String superHeroPowerLevel;
     private String superHeroSuperPower;
+    SuperHero yourHero = new SuperHero();
+    SuperHero enemyHero = new SuperHero();
+
+
+    @FXML
+    void onHelloButtonClick(ActionEvent event) {
+
+        if (event.getSource() == btnGeneratename) {
+            yourHero.setName(getName(txtFieldmonth.getText()));
+            txtArea.setText("Your superhero name will be: " + yourHero.getName());
+        } else if (event.getSource() == btngeneratesuperpower) {
+            yourHero.setSuperPower(getSuperpower());
+            txtArea.setText("Your superpower is: " + yourHero.getSuperPower());
+        } else if (event.getSource() == btngenerate) {
+            yourHero.setPowerLevel(getPowerLevel());
+            if(yourHero.getPowerLevel() == 0){
+                txtArea.setText("Your superhero is as weak as they get ;(");
+            } else {
+                txtArea.setText("Your superhero is STRONG!!!!");
+            }
+
+        } else if(event.getSource() == btnCreateEenemy){
+            System.out.println("works");
+
+            enemyHero.setName(getName(txtenemymonth.getText()));
+            enemyHero.setSuperPower(getSuperpower());
+            enemyHero.setPowerLevel(getPowerLevel());
+        } else if (event.getSource()== btnprint){
+            txtArea.setText("YOUR HERO: " + yourHero.toString() + "   ENEMY HERO: " + enemyHero.toString());
+        }
+    }
 
 
 
 
 
-    public void getName(){
+
+    public String getName(String month){
         String name;
-        String month = txtFieldmonth.getText();
+
         switch (month) {
             case "1":
                 name = "Hulk";
@@ -83,75 +122,91 @@ public class HelloController {
                 name = "Dummy";
                 break;
         }
-        this.superHeroName = name;
-        txtArea.setText("Your superhero name is: " + name + " " + getPowerLevel());
+
+        return name;
 
     }
 
-    public void test(){
+//    public void test(){
+//
+//        if(superHeroName != null){
+//            String lol = superHeroName + " IS WEAK AF dxdxdxd";
+//            txtArea.setText(lol);
+//        } else {
+//            txtArea.setText("Generate superhero name first!");
+//        }
+//
+//
+//
+//
+//
+//    }
 
-        if(superHeroName != null){
-            String lol = superHeroName + " IS WEAK AF dxdxdxd";
-            txtArea.setText(lol);
-        } else {
-            txtArea.setText("Generate superhero name first!");
-        }
-
-
-
-
-
-    }
-
-    public static String getPowerLevel(){
+    public int getPowerLevel(){
         Random r = new Random();
         int roll,i;
-        String level;
+        int level;
         roll = r.nextInt(9+1);
 
 
         if(roll<5){
-            level = "You are weak ";
+
+            level = 0;
 
         }
         else{
-            level = "You are strong ";
+
+            level =  1;
         }
+
         return level;
 
     }
 
 
-    public void getSuperpower() {
+    public String getSuperpower() {
+        String superPower;
 
         switch (new Random().nextInt(13)) {
             case 1:
-                this.superHeroSuperPower = "gravity manipulation";
+                superPower = "gravity manipulation";
+                break;
             case 2:
-                this.superHeroSuperPower =  "nature controlling";
+                superPower =  "nature controlling";
+                break;
             case 3:
-                this.superHeroSuperPower =  "breathing under water";
+                superPower =  "breathing under water";
+                break;
             case 4:
-                this.superHeroSuperPower =  "acid cloud summoning";
+                superPower =  "acid cloud summoning";
+                break;
             case 5:
-                this.superHeroSuperPower =  "respawning";
+                superPower =  "respawning";
+                break;
             case 6:
-                this.superHeroSuperPower =  "flexibility";
+                superPower =  "flexibility";
+                break;
             case 7:
-                this.superHeroSuperPower =  "teleportation";
+                superPower =  "teleportation";
+                break;
             case 8:
-                this.superHeroSuperPower =  "water manipulation";
+                superPower =  "water manipulation";
+                break;
             case 9:
-                this.superHeroSuperPower =  "fire breathing";
+                superPower =  "fire breathing";
+                break;
             case 10:
-                this.superHeroSuperPower =  "invisibility";
+                superPower =  "invisibility";
+                break;
             case 11:
-                this.superHeroSuperPower =  "flying";
+                superPower =  "flying";
+                break;
             default:
-                this.superHeroSuperPower =  "walking";
+                superPower =  "walking";
+                break;
         }
 
-          txtArea.setText("Your superhero super power is :" + this.superHeroSuperPower);
+          return superPower;
     }
 
 
