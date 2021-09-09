@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
 import java.util.Random;
 
 public class HelloController {
@@ -39,15 +40,13 @@ public class HelloController {
 
 
 
-    private String superHeroName;
-    private String superHeroPowerLevel;
-    private String superHeroSuperPower;
+
     SuperHero yourHero = new SuperHero();
     SuperHero enemyHero = new SuperHero();
 
 
     @FXML
-    void onHelloButtonClick(ActionEvent event) {
+    void onHelloButtonClick(ActionEvent event)throws IOException {
 
         if (event.getSource() == btnGeneratename) {
             yourHero.setName(getName(txtFieldmonth.getText()));
@@ -91,6 +90,8 @@ public class HelloController {
 
     public String getName(String month){
         String name;
+
+
 
         switch (month) {
             case "1":
@@ -216,8 +217,8 @@ public class HelloController {
     }
 
 
-    public void fight(){
-
+    public void fight() throws IOException{
+        test();
         if(comparePowerLevels(yourHero.getPowerLevel(), enemyHero.getPowerLevel()) < 0){
             txtArea.setText(yourHero.getName() + " GETS REKT BY "+ enemyHero.getName());
         } else if (comparePowerLevels(yourHero.getPowerLevel(), enemyHero.getPowerLevel()) > 0) {
@@ -227,6 +228,12 @@ public class HelloController {
         }
 
 
+    }
+
+    public void test() throws IOException {
+
+        String url_open ="https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+        java.awt.Desktop.getDesktop().browse(java.net.URI.create(url_open));
     }
 
 
